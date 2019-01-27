@@ -1,0 +1,180 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: DictinorayAPI
+  contact:
+    email: gyomberattila@gmail.com
+tags:
+  - name: Dictionary
+    description: Dictionray database, which contains words and their counterparts.
+    externalDocs:
+      description: Find out more
+      url: 'http://www.google.com'
+schemes:
+  - http
+paths:
+  /addWord:
+    post:
+      operationId: addWord
+      consumes:
+        - application/json
+      tags:
+        - Dictionary
+      parameters:
+        - in: query
+          name: english
+          type: string
+          required: true
+          description: The english word in the database.
+        - in: query
+          name: hungarian
+          type: string
+          required: true
+          description: The hungarian word in the database.
+        - in: query
+          name: partsOfSpeech
+          type: string
+          required: true
+          description: The parts of speech of the given word in the database.
+        - in: query
+          name: synonym
+          type: string
+          required: false
+          description: The synonym of the given word in the database.
+        - in: query
+          name: example
+          type: string
+          required: false
+          description: An example sentence with the given word in the database.
+      responses:
+        '200':
+          description: The word has been stored.
+  /getAllWords:
+    get:
+      operationId: getAllWords
+      produces:
+        - application/json
+      tags:
+        - Dictionary
+      responses:
+        '201':
+          description: The words have been queried.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Dictionary'
+  /getOneWord:
+    get:
+      operationId: getOneWord
+      produces:
+        - application/json
+      tags:
+        - Dictionary
+      parameters:
+        - in: query
+          name: id
+          type: number
+          required: true
+          description: The id of the word in the database.
+      responses:
+        '201':
+          description: The word has been queried.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Dictionary'
+  /checkWord:
+    get:
+      operationId: checkWord
+      produces:
+        - application/json
+      tags:
+        - Dictionary
+      parameters:
+        - in: query
+          name: english
+          type: string
+          required: true
+          description: The english word in the database.
+      responses:
+        '201':
+          description: The word has been checked.
+  /modifyWord:
+    put:
+      operationId: modifyWord
+      produces:
+        - application/json
+      tags:
+        - Dictionary
+      parameters:
+        - in: query
+          name: id
+          type: number
+          required: true
+          description: The id of the word in the database.
+        - in: query
+          name: english
+          type: string
+          required: true
+          description: The english word in the database.
+        - in: query
+          name: hungarian
+          type: string
+          required: true
+          description: The hungarian word in the database.
+        - in: query
+          name: partsOfSpeech
+          type: string
+          required: true
+          description: The parts of speech of the given word in the database.
+        - in: query
+          name: synonym
+          type: string
+          required: false
+          description: The synonym of the given word in the database.
+        - in: query
+          name: example
+          type: string
+          required: false
+          description: An example sentence with the given word in the database.
+      responses:
+        '200':
+          description: The word has been modified.
+  /deleteWord:
+    delete:
+      operationId: deleteWord
+      produces:
+        - application/json
+      tags:
+        - Dictionary
+      parameters:
+        - in: query
+          name: id
+          type: number
+          required: true
+          description: The id of the word in the database.
+      responses:
+        '400':
+          description: The word has been deleted.
+definitions:
+  Dictionary:
+    type: object
+    properties:
+      id:
+        type: number
+        description: The id of the word in the database.
+      english:
+        type: string
+        description: The english word in the database.
+      hungarian:
+        type: string
+        description: The hungarian word in the database.
+      partsOfSpeech:
+        type: string
+        description: The parts of speech of the given word in the database.
+      synonym:
+        type: string
+        description: The synonym of the given word in the database.
+      example:
+        type: string
+        description: An example sentence with the given word in the database.

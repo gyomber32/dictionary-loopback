@@ -1,0 +1,38 @@
+{
+  "name": "Dictionary",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The id of the word in the database."
+    },
+    "english": {
+      "type": "string",
+      "description": "The english word in the database."
+    },
+    "hungarian": {
+      "type": "string",
+      "description": "The hungarian word in the database."
+    },
+    "partsOfSpeech": {
+      "type": "string",
+      "description": "The parts of speech of the given word in the database."
+    },
+    "synonym": {
+      "type": "string",
+      "description": "The synonym of the given word in the database."
+    },
+    "example": {
+      "type": "string",
+      "description": "An example sentence with the given word in the database."
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
