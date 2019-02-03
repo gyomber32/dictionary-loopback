@@ -96,9 +96,18 @@ paths:
           type: string
           required: true
           description: The english word in the database.
+        - in: query
+          name: partsOfSpeech
+          type: string
+          required: true
+          description: The parts of speech of the given word in the database.
       responses:
         '201':
           description: The word has been checked.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Dictionary'
   /modifyWord:
     put:
       operationId: modifyWord

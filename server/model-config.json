@@ -14,7 +14,7 @@
     ]
   },
   "Dictionary": {
-    "dataSource": null,
+    "dataSource": "postgres",
     "public": true
   }
 }
